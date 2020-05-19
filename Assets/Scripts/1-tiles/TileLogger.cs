@@ -6,12 +6,12 @@ using UnityEngine.Tilemaps;
  */
 public class TileLogger : MonoBehaviour {
     [Header("Input")]
-    [SerializeField] Tilemap tilemap;
+    [SerializeField] Tilemap tilemap = null;
 
     [Header("Output")]
     [SerializeField] Vector3Int cellPosition;
-    [SerializeField] TileBase tile;
-    [SerializeField] string tileName;
+    [SerializeField] TileBase tile = null;
+    [SerializeField] string tileName = null;
 
     void Update()  {
         cellPosition = tilemap.WorldToCell(transform.position);

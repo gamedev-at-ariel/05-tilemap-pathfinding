@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 /**
  * This component makes its object watch a given radius, and if the target is found - it starts chasing it.
  */

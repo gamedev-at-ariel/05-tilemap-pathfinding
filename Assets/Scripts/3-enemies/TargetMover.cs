@@ -18,9 +18,14 @@ public class TargetMover: MonoBehaviour {
     [Tooltip("The target position in grid coordinates")]
     [SerializeField] Vector3Int targetInGrid;
 
+    protected bool atTarget;  // This property is set to "true" whenever the object has already found the target.
+
     public void SetTarget(Vector3 newTarget) {
-        targetInWorld = newTarget;
-        targetInGrid  = tilemap.WorldToCell(targetInWorld);
+        if (targetInWorld != newTarget) {
+            targetInWorld = newTarget;
+            targetInGrid = tilemap.WorldToCell(targetInWorld);
+            atTarget = false;
+        }
     }
 
     [Tooltip("Maximum number of iterations before BFS algorithm gives up on finding a path")]
@@ -51,6 +56,8 @@ public class TargetMover: MonoBehaviour {
         if (shortestPath.Count >= 2) {
             Vector3Int nextNode = shortestPath[1];
             transform.position = tilemap.GetCellCenterWorld(nextNode);
+        } else {
+            atTarget = true;
         }
     }
 }
