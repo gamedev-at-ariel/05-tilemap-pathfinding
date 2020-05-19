@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 /**
  * Finds a path on a tilemap, using only the allowed tiles.
  */
-public class TilemapBFS: BFS<Vector3Int> {
+public class TilemapBFSWithTracking: BFSWithTracking<Vector3Int> {
 
     private Tilemap tilemap;
     private TileBase[] allowedTiles;
@@ -15,7 +15,7 @@ public class TilemapBFS: BFS<Vector3Int> {
     private float delay = 0.2f;
     private bool showProgress = true;
 
-    public TilemapBFS(Tilemap tilemap, TileBase[] allowedTiles, float delay, bool showProgress) {
+    public TilemapBFSWithTracking(Tilemap tilemap, TileBase[] allowedTiles, float delay, bool showProgress) {
         this.tilemap = tilemap;
         this.allowedTiles = allowedTiles;
         this.delay = delay;

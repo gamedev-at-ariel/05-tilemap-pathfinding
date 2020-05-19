@@ -8,10 +8,10 @@ using System.Collections.Generic;
  * @author Erel Segal-Halevi
  * @since 2020-02
  */
-public abstract class BFS<NodeType> {
+public abstract class BFSWithTracking<NodeType> {
 
     // Override this function to define the neighbors of the given node:
-    public virtual IEnumerable<NodeType> Neighbors(NodeType node) { return null; }
+    public abstract IEnumerable<NodeType> Neighbors(NodeType node);
 
     // Override these functions to track the progress of the algorithm:
     public virtual IEnumerator OnEndFound() { return null; }
@@ -27,7 +27,7 @@ public abstract class BFS<NodeType> {
         Dictionary<NodeType, NodeType> previous = new Dictionary<NodeType, NodeType>();
         openQueue.Enqueue(startNode);
         yield return OnOpen(startNode);
-        int i; for (i = 0; i < maxiterations; ++i) { // Not part of the algorithm - just to prevent infinite loops in case of bugs.
+        int i; for (i = 0; i < maxiterations; ++i) { // After maxiterations, stop and return an empty path
             if (openQueue.Count == 0) {
                 yield return OnEndNotFound();
                 break;
@@ -56,9 +56,6 @@ public abstract class BFS<NodeType> {
                 closedSet.Add(searchFocus);
                 yield return OnClose(searchFocus);
             }
-        }
-        if (i >= 1000) {
-            throw new OverflowException("Too many iterations");
         }
     }
 

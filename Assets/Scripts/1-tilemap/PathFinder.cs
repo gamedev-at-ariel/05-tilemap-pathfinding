@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿//using System.Collections.Generic;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /**
@@ -17,30 +20,29 @@ public class PathFinder: MonoBehaviour {
     [SerializeField] Transform target = null;
 
     private void Start() {
-        tilemapBFS = new TilemapBFS(tilemap, allowedTiles.Get(), delay, showProgress);
+        tilemapBFS = new TilemapBFSWithTracking(tilemap, allowedTiles.Get(), delay, showProgress);
         timeBetweenSteps = 1 / speed;
-        timeBeforeNextStep = timeBetweenSteps;
+
+        StartCoroutine(ChaseTarget());
     }
 
-    void Update()  {
-        timeBeforeNextStep -= Time.deltaTime;
-        if (timeBeforeNextStep <= 0) {
+    IEnumerator ChaseTarget() {
+        for(;;) {
+            yield return new WaitForSeconds(timeBetweenSteps);
             MakeOneStepTowardsTheTarget();
-            timeBeforeNextStep += timeBetweenSteps;
         }
     }
 
-
-    private TilemapBFS tilemapBFS = null;
+    private TilemapBFSWithTracking tilemapBFS = null;
     private float timeBeforeNextStep = 0;
     private float timeBetweenSteps;
 
     private void MakeOneStepTowardsTheTarget() {
         Vector3Int startNode = tilemap.WorldToCell(transform.position);
         Vector3Int endNode = tilemap.WorldToCell(target.position);
-        var shortestPath = tilemapBFS.GetPath(startNode, endNode);
+        List<Vector3Int> shortestPath = tilemapBFS.GetPath(startNode, endNode);
         Debug.Log("shortestPath = " + string.Join(" , ",shortestPath));
-        if (shortestPath.Count > 1) {
+        if (shortestPath.Count >= 2) {
             Vector3Int nextNode = shortestPath[1];
             transform.position = tilemap.GetCellCenterWorld(nextNode);
         }
