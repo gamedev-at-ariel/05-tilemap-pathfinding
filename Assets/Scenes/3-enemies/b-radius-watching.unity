@@ -327,7 +327,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790962199}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.5, y: -4.5, z: 0}
+  m_LocalPosition: {x: 8.5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2291,10 +2291,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 931517250}
   allowedTiles: {fileID: 1972678413}
-  delay: 0
-  showProgress: 0
   speed: 1
-  target: {fileID: 790962201}
+  targetInWorld: {x: 0, y: 0, z: 0}
+  targetInGrid: {x: 0, y: 0, z: 0}
+  maxIterations: 1000
+  targetObject: {fileID: 790962201}
 --- !u!1 &1972678411
 GameObject:
   m_ObjectHideFlags: 0
@@ -2354,6 +2355,7 @@ GameObject:
   - component: {fileID: 2052329454}
   - component: {fileID: 2052329453}
   - component: {fileID: 2052329455}
+  - component: {fileID: 2052329456}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Untagged
@@ -2440,7 +2442,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 931517250}
   allowedTiles: {fileID: 1972678413}
-  delay: 0
-  showProgress: 0
   speed: 2
+  targetInWorld: {x: 0, y: 0, z: 0}
+  targetInGrid: {x: 0, y: 0, z: 0}
+  maxIterations: 1000
+  targetObject: {fileID: 790962201}
+--- !u!114 &2052329456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052329452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618d34ac3e8e67c4eb9e87f33f119d92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   target: {fileID: 790962201}
+  radiusToWatch: 5
