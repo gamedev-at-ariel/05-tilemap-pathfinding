@@ -2266,6 +2266,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1373858623}
   - component: {fileID: 1373858622}
+  - component: {fileID: 1373858626}
+  - component: {fileID: 1373858625}
   - component: {fileID: 1373858624}
   m_Layer: 0
   m_Name: Enemy2
@@ -2348,16 +2350,52 @@ MonoBehaviour:
   m_GameObject: {fileID: 1373858621}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fd1a0b9add43dd4badb33862acae8fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radiusToWatch: 5
+  targetObject: {fileID: 0}
+--- !u!114 &1373858625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373858621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1efdb247e0cca949a2578a18318da0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 931517250}
   allowedTiles: {fileID: 1972678413}
-  speed: 1
+  speed: 2
   targetInWorld: {x: 0, y: 0, z: 0}
   targetInGrid: {x: 0, y: 0, z: 0}
   maxIterations: 1000
   targetObject: {fileID: 790962201}
+--- !u!114 &1373858626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373858621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837db0ae8b547424e82b3efba184a948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 931517250}
+  allowedTiles: {fileID: 1972678413}
+  speed: 2
+  targetInWorld: {x: 0, y: 0, z: 0}
+  targetInGrid: {x: 0, y: 0, z: 0}
+  maxIterations: 1000
+  patrolPoints:
+  - {fileID: 911555770}
+  - {fileID: 1693596113}
+  gizmoRadius: 0.2
 --- !u!1 &1693596112
 GameObject:
   m_ObjectHideFlags: 0
@@ -2513,7 +2551,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052329452}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.5, y: -2.5, z: 0}
+  m_LocalPosition: {x: -5.33, y: -2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2528,7 +2566,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2052329452}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fd1a0b9add43dd4badb33862acae8fc, type: 3}
+  m_Script: {fileID: 11500000, guid: 837db0ae8b547424e82b3efba184a948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 931517250}
@@ -2537,8 +2575,7 @@ MonoBehaviour:
   targetInWorld: {x: 0, y: 0, z: 0}
   targetInGrid: {x: 0, y: 0, z: 0}
   maxIterations: 1000
-  targetObject: {fileID: 790962201}
-  radiusToWatch: 5
   patrolPoints:
   - {fileID: 911555770}
   - {fileID: 1693596113}
+  gizmoRadius: 0.2

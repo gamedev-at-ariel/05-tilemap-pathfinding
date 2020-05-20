@@ -28,6 +28,10 @@ public class TargetMover: MonoBehaviour {
         }
     }
 
+    public Vector3 GetTarget() {
+        return targetInWorld;
+    }
+
     [Tooltip("Maximum number of iterations before BFS algorithm gives up on finding a path")]
     [SerializeField] int maxIterations = 1000;
 
