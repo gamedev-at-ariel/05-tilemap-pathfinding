@@ -2354,7 +2354,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radiusToWatch: 5
-  targetObject: {fileID: 0}
 --- !u!114 &1373858625
 MonoBehaviour:
   m_ObjectHideFlags: 0
