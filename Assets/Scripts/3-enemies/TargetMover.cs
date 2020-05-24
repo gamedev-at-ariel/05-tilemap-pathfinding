@@ -38,7 +38,7 @@ public class TargetMover: MonoBehaviour {
     private TilemapBFS tilemapBFS = null;
     private float timeBetweenSteps;
 
-    private void Start() {
+    protected virtual void Start() {
         tilemapBFS = new TilemapBFS(tilemap, allowedTiles.Get());
         timeBetweenSteps = 1 / speed;
         StartCoroutine(MoveTowardsTheTarget());
