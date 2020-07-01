@@ -2402,7 +2402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 931517250}
   allowedTiles: {fileID: 1972678413}
-  speed: 2
+  speed: 5
   targetInWorld: {x: 0, y: 0, z: 0}
   targetInGrid: {x: 0, y: 0, z: 0}
   maxIterations: 1000
@@ -2614,7 +2614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 931517250}
   allowedTiles: {fileID: 1972678413}
-  speed: 2
+  speed: 5
   targetInWorld: {x: 0, y: 0, z: 0}
   targetInGrid: {x: 0, y: 0, z: 0}
   maxIterations: 1000
