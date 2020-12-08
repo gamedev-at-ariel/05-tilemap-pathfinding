@@ -2387,9 +2387,9 @@ MonoBehaviour:
   tilemap: {fileID: 931517250}
   allowedTiles: {fileID: 1972678413}
   speed: 2
+  maxIterations: 1000
   targetInWorld: {x: 0, y: 0, z: 0}
   targetInGrid: {x: 0, y: 0, z: 0}
-  maxIterations: 1000
   targetObject: {fileID: 790962201}
 --- !u!114 &1373858626
 MonoBehaviour:
@@ -2406,9 +2406,9 @@ MonoBehaviour:
   tilemap: {fileID: 931517250}
   allowedTiles: {fileID: 1972678413}
   speed: 2
+  maxIterations: 1000
   targetInWorld: {x: 0, y: 0, z: 0}
   targetInGrid: {x: 0, y: 0, z: 0}
-  maxIterations: 1000
   patrolPath: {fileID: 363734903}
   pointCount: 0
   currentPointIndex: 0
@@ -2631,7 +2631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9790ede6c8fc5f40a0c5b038a993280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minAngle: -30
-  maxAngle: 30
+  minAngle: -45
+  maxAngle: 45
   angularSpeed: 30
   direction: 1

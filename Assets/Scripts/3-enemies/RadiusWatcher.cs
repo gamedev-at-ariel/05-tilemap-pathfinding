@@ -23,7 +23,9 @@ public class RadiusWatcher: MonoBehaviour {
     }
 
     private void OnDrawGizmosSelected() {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radiusToWatch);
+        if (enabled) {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, radiusToWatch);
+        }
     }
 }

@@ -4,15 +4,23 @@
  * This component allows the player to move by clicking the arrow keys.
  */
 public class KeyboardMover : MonoBehaviour {
-    void Update()  {
+
+    protected Vector3 NewPosition() {
         if (Input.GetKeyDown(KeyCode.LeftArrow)) {
-            transform.position += Vector3.left;
+            return transform.position + Vector3.left;
         } else if (Input.GetKeyDown(KeyCode.RightArrow)) {
-            transform.position += Vector3.right;
+            return transform.position + Vector3.right;
         } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
-            transform.position += Vector3.down;
+            return transform.position + Vector3.down;
         } else if (Input.GetKeyDown(KeyCode.UpArrow)) {
-            transform.position += Vector3.up;
+            return transform.position + Vector3.up;
+        } else {
+            return transform.position;
         }
+    }
+
+
+    void Update()  {
+        transform.position = NewPosition();
     }
 }

@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /**
  * This component patrols between given points, chases a given target object when it sees it, and rotates from time to time.
  */
 [RequireComponent(typeof(Patroller))]
 [RequireComponent(typeof(Chaser))]
+[RequireComponent(typeof(Rotator))]
 public class EnemyController3: MonoBehaviour {
     [SerializeField] float radiusToWatch = 5f;
     [SerializeField] float probabilityToRotate = 0.2f;
@@ -37,7 +37,6 @@ public class EnemyController3: MonoBehaviour {
         Patrol();
     }
 
-    private int currentPointIndex = 0;
     private void Update() {
         float distanceToTarget = Vector3.Distance(transform.position, chaser.TargetObjectPosition());
 

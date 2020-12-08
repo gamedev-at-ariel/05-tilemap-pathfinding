@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 /**
  * A generic implementation of the BFS algorithm.
  * @author Erel Segal-Halevi
  * @since 2020-02
  */
-public abstract class BFS<NodeType> {
+public class BFS {
 
-    // Override this function to define the neighbors of the given node:
-    public abstract IEnumerable<NodeType> Neighbors(NodeType node);
-
-    public void FindPath(NodeType startNode, NodeType endNode, List<NodeType> path, int maxiterations=1000) {
+    public static void FindPath<NodeType>(
+            AbstractGraph<NodeType> graph, 
+            NodeType startNode, NodeType endNode, 
+            List<NodeType> outputPath, int maxiterations=1000)
+    {
         Queue<NodeType> openQueue = new Queue<NodeType>();
         HashSet<NodeType> closedSet = new HashSet<NodeType>();
         Dictionary<NodeType, NodeType> previous = new Dictionary<NodeType, NodeType>();
@@ -22,30 +21,35 @@ public abstract class BFS<NodeType> {
                 break;
             } else {
                 NodeType searchFocus = openQueue.Dequeue();
+
                 if (searchFocus.Equals(endNode)) {
-                    path.Add(endNode);
+                    // We found the target -- now construct the path:
+                    outputPath.Add(endNode);
                     while (previous.ContainsKey(searchFocus)) {
                         searchFocus = previous[searchFocus];
-                        path.Add(searchFocus);
+                        outputPath.Add(searchFocus);
                     }
-                    path.Reverse();
+                    outputPath.Reverse();
                     break;
-                }
-                foreach (var neighbor in Neighbors(searchFocus)) {
-                    if (closedSet.Contains(neighbor)) {
-                        continue;
+                } else {
+                    // We did not found the target yet -- develop new nodes.
+                    foreach (var neighbor in graph.Neighbors(searchFocus)) {
+                        if (closedSet.Contains(neighbor)) {
+                            continue;
+                        }
+                        openQueue.Enqueue(neighbor);
+                        previous[neighbor] = searchFocus;
                     }
-                    openQueue.Enqueue(neighbor);
-                    previous[neighbor] = searchFocus;
+                    closedSet.Add(searchFocus);
                 }
-                closedSet.Add(searchFocus);
             }
         }
     }
 
-    public List<NodeType> GetPath(NodeType startNode, NodeType endNode, int maxiterations=1000) {
+    public static List<NodeType> GetPath<NodeType>(AbstractGraph<NodeType> graph, NodeType startNode, NodeType endNode, int maxiterations=1000) {
         List<NodeType> path = new List<NodeType>();
-        FindPath(startNode, endNode, path, maxiterations);
+        FindPath(graph, startNode, endNode, path, maxiterations);
         return path;
     }
+
 }

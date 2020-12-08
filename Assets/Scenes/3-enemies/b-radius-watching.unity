@@ -2292,9 +2292,9 @@ MonoBehaviour:
   tilemap: {fileID: 931517250}
   allowedTiles: {fileID: 1972678413}
   speed: 1
+  maxIterations: 1000
   targetInWorld: {x: 0, y: 0, z: 0}
   targetInGrid: {x: 0, y: 0, z: 0}
-  maxIterations: 1000
   targetObject: {fileID: 790962201}
 --- !u!1 &1972678411
 GameObject:
@@ -2443,9 +2443,9 @@ MonoBehaviour:
   tilemap: {fileID: 931517250}
   allowedTiles: {fileID: 1972678413}
   speed: 2
+  maxIterations: 1000
   targetInWorld: {x: 0, y: 0, z: 0}
   targetInGrid: {x: 0, y: 0, z: 0}
-  maxIterations: 1000
   targetObject: {fileID: 790962201}
 --- !u!114 &2052329456
 MonoBehaviour:

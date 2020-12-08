@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /**
  * This component patrols between given points, and chases a given target object when it sees it.
@@ -18,7 +17,6 @@ public class EnemyController: MonoBehaviour {
         patroller.enabled = true;
     }
 
-    private int currentPointIndex = 0;
     private void Update() {
         float distanceToTarget = Vector3.Distance(transform.position, chaser.TargetObjectPosition());
         if (distanceToTarget <= radiusToWatch) {

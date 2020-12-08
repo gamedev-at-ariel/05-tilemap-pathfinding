@@ -13,8 +13,12 @@ public class TargetMover: MonoBehaviour {
     [Tooltip("The speed by which the object moves towards the target, in meters (=grid units) per second")]
     [SerializeField] float speed = 2f;
 
+    [Tooltip("Maximum number of iterations before BFS algorithm gives up on finding a path")]
+    [SerializeField] int maxIterations = 1000;
+
     [Tooltip("The target position in world coordinates")]
     [SerializeField] Vector3 targetInWorld;
+
     [Tooltip("The target position in grid coordinates")]
     [SerializeField] Vector3Int targetInGrid;
 
@@ -32,14 +36,11 @@ public class TargetMover: MonoBehaviour {
         return targetInWorld;
     }
 
-    [Tooltip("Maximum number of iterations before BFS algorithm gives up on finding a path")]
-    [SerializeField] int maxIterations = 1000;
-
-    private TilemapBFS tilemapBFS = null;
+    private TilemapGraph tilemapGraph = null;
     private float timeBetweenSteps;
 
     protected virtual void Start() {
-        tilemapBFS = new TilemapBFS(tilemap, allowedTiles.Get());
+        tilemapGraph = new TilemapGraph(tilemap, allowedTiles.Get());
         timeBetweenSteps = 1 / speed;
         StartCoroutine(MoveTowardsTheTarget());
     }
@@ -47,7 +48,7 @@ public class TargetMover: MonoBehaviour {
     IEnumerator MoveTowardsTheTarget() {
         for(;;) {
             yield return new WaitForSeconds(timeBetweenSteps);
-            if (enabled)
+            if (enabled && !atTarget)
                 MakeOneStepTowardsTheTarget();
         }
     }
@@ -55,7 +56,7 @@ public class TargetMover: MonoBehaviour {
     private void MakeOneStepTowardsTheTarget() {
         Vector3Int startNode = tilemap.WorldToCell(transform.position);
         Vector3Int endNode = targetInGrid;
-        List<Vector3Int> shortestPath = tilemapBFS.GetPath(startNode, endNode, maxIterations);
+        List<Vector3Int> shortestPath = BFS.GetPath(tilemapGraph, startNode, endNode, maxIterations);
         Debug.Log("shortestPath = " + string.Join(" , ",shortestPath));
         if (shortestPath.Count >= 2) {
             Vector3Int nextNode = shortestPath[1];
