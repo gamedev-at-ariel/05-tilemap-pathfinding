@@ -3,10 +3,10 @@
 /**
  * An abstract graph.
  * It does not use any memory.
- * It only has a single abstract Neighbors function, that returns the neighbors of a given node.
+ * It only has a single abstract function Neighbors, that returns the neighbors of a given node.
  * @author Erel Segal-Halevi
- * @since 2020-02
+ * @since 2020-12
  */
-public abstract class AbstractGraph<NodeType> {
-    public abstract IEnumerable<NodeType> Neighbors(NodeType node);
+public interface AbstractGraph<NodeType> {
+    IEnumerable<NodeType> Neighbors(NodeType node);
 }

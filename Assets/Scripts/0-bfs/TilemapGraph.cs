@@ -22,7 +22,7 @@ public class TilemapGraph: AbstractGraph<Vector3Int> {
             new Vector3Int(0, 1, 0),
     };
 
-    public override IEnumerable<Vector3Int> Neighbors(Vector3Int node) {
+    public IEnumerable<Vector3Int> Neighbors(Vector3Int node) {
         foreach (var direction in directions) {
             Vector3Int neighborPos = node + direction;
             TileBase neighborTile = tilemap.GetTile(neighborPos);
