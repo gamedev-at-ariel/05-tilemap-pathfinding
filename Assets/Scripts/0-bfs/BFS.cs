@@ -8,7 +8,7 @@
 public class BFS {
 
     public static void FindPath<NodeType>(
-            AbstractGraph<NodeType> graph, 
+            IGraph<NodeType> graph, 
             NodeType startNode, NodeType endNode, 
             List<NodeType> outputPath, int maxiterations=1000)
     {
@@ -46,7 +46,7 @@ public class BFS {
         }
     }
 
-    public static List<NodeType> GetPath<NodeType>(AbstractGraph<NodeType> graph, NodeType startNode, NodeType endNode, int maxiterations=1000) {
+    public static List<NodeType> GetPath<NodeType>(IGraph<NodeType> graph, NodeType startNode, NodeType endNode, int maxiterations=1000) {
         List<NodeType> path = new List<NodeType>();
         FindPath(graph, startNode, endNode, path, maxiterations);
         return path;

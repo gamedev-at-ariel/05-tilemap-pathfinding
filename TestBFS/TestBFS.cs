@@ -12,15 +12,15 @@ using IntPair = System.ValueTuple<int, int>;
  */
 namespace TestBFS {
 
-    class IntGraph: AbstractGraph<int> {
-        public override IEnumerable<int> Neighbors(int node) {
+    class IntGraph: IGraph<int> {
+        public IEnumerable<int> Neighbors(int node) {
             yield return node + 1;
             yield return node - 1;
         }
     }
 
-    class IntPairGraph : AbstractGraph<IntPair> {
-        public override IEnumerable<IntPair> Neighbors(IntPair node) {
+    class IntPairGraph : IGraph<IntPair> {
+        public IEnumerable<IntPair> Neighbors(IntPair node) {
             yield return (node.Item1, node.Item2 + 1);
             yield return (node.Item1, node.Item2 - 1);
             yield return (node.Item1 + 1, node.Item2);

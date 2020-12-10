@@ -14,7 +14,8 @@ public class RadiusWatcher: MonoBehaviour {
     }
 
     void Update() {
-        float distanceToTarget = Vector3.Distance(transform.position, chaser.TargetObjectPosition());
+        float distanceToTarget = Vector3.Distance(
+            transform.position, chaser.TargetObjectPosition());
         if (distanceToTarget <= radiusToWatch) {
             chaser.enabled = true;
         } else {
