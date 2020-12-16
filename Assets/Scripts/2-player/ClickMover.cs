@@ -9,7 +9,7 @@ using UnityEngine;
  */
 public class ClickMover: TargetMover {
     void Update() {
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetMouseButtonDown(0)) {
             Vector3 newTarget = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             SetTarget(newTarget);
         }
