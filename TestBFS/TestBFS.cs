@@ -46,7 +46,7 @@ namespace TestBFS {
             var path2 = BFS.GetPath(intPairGraph, (9, 5), (7, 6));
             pathString = String.Join(",", path2.ToArray());
             Console.WriteLine("path is: " + pathString);
-            Debug.Assert(pathString == "(9, 5),(8, 5),(7, 5),(7, 6)");
+            Debug.Assert(pathString == "(9, 5),(9, 6),(8, 6),(7, 6)");
 
             // Here we should get an empty path because of maxiterations:
             int maxiterations = 1000;
