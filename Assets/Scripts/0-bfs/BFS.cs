@@ -13,9 +13,10 @@ public class BFS {
             List<NodeType> outputPath, int maxiterations=1000)
     {
         Queue<NodeType> openQueue = new Queue<NodeType>();
-        HashSet<NodeType> closedSet = new HashSet<NodeType>();
+        HashSet<NodeType> openSet = new HashSet<NodeType>();
         Dictionary<NodeType, NodeType> previous = new Dictionary<NodeType, NodeType>();
         openQueue.Enqueue(startNode);
+        openSet.Add(startNode);
         int i; for (i = 0; i < maxiterations; ++i) { // After maxiterations, stop and return an empty path
             if (openQueue.Count == 0) {
                 break;
@@ -34,13 +35,13 @@ public class BFS {
                 } else {
                     // We did not found the target yet -- develop new nodes.
                     foreach (var neighbor in graph.Neighbors(searchFocus)) {
-                        if (closedSet.Contains(neighbor)) {
+                        if (openSet.Contains(neighbor)) {
                             continue;
                         }
                         openQueue.Enqueue(neighbor);
+                        openSet.Add(neighbor);
                         previous[neighbor] = searchFocus;
                     }
-                    closedSet.Add(searchFocus);
                 }
             }
         }
