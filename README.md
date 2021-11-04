@@ -3,6 +3,14 @@
 A project with step-by-step scenes illustrating how to construct a 2D scene using tilemaps,
 and how to do path-finding using the BFS algorithm.
 
+Text explanations are available 
+[here](https://github.com/erelsgl-at-ariel/gamedev-5782) in folder 07.
+
+## Cloning
+To clone the project, you may need to install git lfs first:
+
+    git lfs install 
+
 
 ## Credits
 
