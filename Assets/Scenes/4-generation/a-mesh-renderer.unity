@@ -249,6 +249,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayPlaneRenderer: {fileID: 1429389047}
   randomFillPercent: 0.5
+  gridSize: 100
+  simulationSteps: 20
+  pauseTime: 1
 --- !u!1 &335369416
 GameObject:
   m_ObjectHideFlags: 0

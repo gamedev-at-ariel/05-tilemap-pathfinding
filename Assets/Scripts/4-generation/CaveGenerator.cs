@@ -104,8 +104,7 @@ public class CaveGenerator {
         for (int neighborX = cellX - 1; neighborX <= cellX + 1; neighborX ++) {
             for (int neighborY = cellY - 1; neighborY <= cellY + 1; neighborY++) {
                 //We dont need to care about being outside of the grid because we are never looking at the border
-                //This is the cell itself and no neighbor!
-                if (neighborX == cellX && neighborY == cellY) {
+                if (neighborX == cellX && neighborY == cellY) { //This is the cell itself and no neighbor!
                     continue;
                 }
 

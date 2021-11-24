@@ -368,8 +368,11 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
     </member>
     <member name="M:UnityEngine.Input.GetJoystickNames">
       <summary>
-        <para>Returns an array of strings describing the connected joysticks.</para>
+        <para>Retrieves a list of input device names corresponding to the index of an Axis configured within Input Manager.</para>
       </summary>
+      <returns>
+        <para>Returns an array of joystick and gamepad device names.</para>
+      </returns>
     </member>
     <member name="M:UnityEngine.Input.GetKey(System.String)">
       <summary>
@@ -571,7 +574,7 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
     </member>
     <member name="P:UnityEngine.Touch.deltaPosition">
       <summary>
-        <para>The position delta since last change.</para>
+        <para>The position delta since last change in pixel coordinates.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Touch.deltaTime">
@@ -596,7 +599,7 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
     </member>
     <member name="P:UnityEngine.Touch.position">
       <summary>
-        <para>The position of the touch in pixel coordinates.</para>
+        <para>The position of the touch in screen space pixel coordinates.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Touch.pressure">
@@ -616,7 +619,7 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
     </member>
     <member name="P:UnityEngine.Touch.rawPosition">
       <summary>
-        <para>The raw position used for the touch.</para>
+        <para>The first position of the touch contact in screen space pixel coordinates.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Touch.tapCount">
