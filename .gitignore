@@ -12,6 +12,8 @@
 [Ll]ogs/
 [Mm]emoryCaptures/
 [Uu]ser[Ss]ettings/
+**/Debug/
+
 
 # Never ignore Asset meta data
 ![Aa]ssets/**/*.meta

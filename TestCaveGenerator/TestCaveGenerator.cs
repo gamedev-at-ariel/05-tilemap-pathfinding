@@ -4,7 +4,7 @@ namespace TestCaveGenerator {
 
     class Program {
 
-        static int gridSize = 10;
+        static int gridSize = 20;
 
         static void print(int[,] data) {
             for (int x=0; x < gridSize; ++x) {
@@ -17,7 +17,7 @@ namespace TestCaveGenerator {
         }
 
         static void Main(string[] args) {
-            CaveGenerator caveGenerator = new CaveGenerator(0.3f, 10);
+            CaveGenerator caveGenerator = new CaveGenerator(0.5f, gridSize);
             caveGenerator.RandomizeMap();
             for (int i=0; i<10; ++i) {
                 print(caveGenerator.GetMap());
