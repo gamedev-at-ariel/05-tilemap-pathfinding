@@ -4,7 +4,7 @@ namespace TestCaveGenerator {
 
     class Program {
 
-        static int gridSize = 20;
+        static int gridSize = 30;
 
         static void print(int[,] data) {
             for (int x=0; x < gridSize; ++x) {

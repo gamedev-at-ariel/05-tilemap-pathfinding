@@ -11,8 +11,8 @@ public class Rotator : MonoBehaviour {
     [SerializeField] private int direction = 1;
 
     void Update() {
-        transform.Rotate(new Vector3(0, direction * angularSpeed * Time.deltaTime, 0));
-        float angle = transform.rotation.eulerAngles.y;
+        transform.Rotate(new Vector3(direction * angularSpeed * Time.deltaTime, 0, 0));
+        float angle = transform.rotation.eulerAngles.x;
         if (angle > 180)
             angle -= 360;
         if (angle <= minAngle)
