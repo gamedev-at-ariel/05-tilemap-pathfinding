@@ -6,7 +6,7 @@
 [RequireComponent(typeof(Patroller))]
 [RequireComponent(typeof(Chaser))]
 [RequireComponent(typeof(Rotator))]
-public class EnemyController3: StateMachine {
+public class EnemyControllerStateMachine: StateMachine {
     [SerializeField] float radiusToWatch = 5f;
     [SerializeField] float probabilityToRotate = 0.2f;
     [SerializeField] float probabilityToStopRotating = 0.2f;
