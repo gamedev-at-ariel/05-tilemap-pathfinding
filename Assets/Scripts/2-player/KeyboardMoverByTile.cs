@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
 /**
@@ -7,6 +8,7 @@ using UnityEngine.Tilemaps;
  */
 public class KeyboardMoverByTile: KeyboardMover {
     [SerializeField] Tilemap tilemap = null;
+//    [SerializeField] TileBase[] allowedTiles = null;
     [SerializeField] AllowedTiles allowedTiles = null;
 
     private TileBase TileOnPosition(Vector3 worldPosition) {
@@ -17,7 +19,7 @@ public class KeyboardMoverByTile: KeyboardMover {
     void Update()  {
         Vector3 newPosition = NewPosition();
         TileBase tileOnNewPosition = TileOnPosition(newPosition);
-        if (allowedTiles.Contain(tileOnNewPosition)) {
+        if (allowedTiles.Contains(tileOnNewPosition)) {
             transform.position = newPosition;
         } else {
             Debug.Log("You cannot walk on " + tileOnNewPosition + "!");
