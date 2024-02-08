@@ -13,7 +13,7 @@ using IntPair = System.ValueTuple<int, int>;
  * @since 2020-02
  */
 namespace TestBFS {
-    
+
     class IntGraph: IGraph<int>
     {  // IGraph is defined in the file ./IGraph.cs (a copy is found in Assets/Scripts/0-bfs/IGraph.cs)
         public IEnumerable<int> Neighbors(int node) {

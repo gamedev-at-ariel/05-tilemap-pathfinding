@@ -7,28 +7,34 @@ using UnityEngine.InputSystem;
  */
 public class ClickMover: TargetMover {
 
-    [SerializeField] InputAction moveAction;
+    [SerializeField] InputAction moveTo = new InputAction(type: InputActionType.Button);
+
+    [SerializeField]
+    [Tooltip("Determine the location to 'moveTo'.")]
+    InputAction moveToLocation = new InputAction(type: InputActionType.Value, expectedControlType: "Vector2");
 
     void OnValidate() {
         // Provide default bindings for the input actions.
         // Based on answer by DMGregory: https://gamedev.stackexchange.com/a/205345/18261
-        if (moveAction == null)
-            moveAction = new InputAction(type: InputActionType.Button);
-        if (moveAction.bindings.Count == 0)
-            moveAction.AddBinding("<Mouse>/leftButton");
+        if (moveTo.bindings.Count == 0)
+            moveTo.AddBinding("<Mouse>/leftButton");
+        if (moveToLocation.bindings.Count == 0)
+            moveToLocation.AddBinding("<Mouse>/position");
     }
 
     private void OnEnable() {
-        moveAction.Enable();
+        moveTo.Enable();
+        moveToLocation.Enable();
     }
 
     private void OnDisable() {
-        moveAction.Disable();
+        moveTo.Disable();
+        moveToLocation.Disable();
     }
 
     void Update() {
-        if (moveAction.WasPerformedThisFrame()) {
-            Vector3 newTarget = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (moveTo.WasPerformedThisFrame()) {
+            Vector3 newTarget = Camera.main.ScreenToWorldPoint(moveToLocation.ReadValue<Vector2>());
             SetTarget(newTarget);
         }
     }

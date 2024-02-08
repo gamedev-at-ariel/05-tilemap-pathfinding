@@ -6,16 +6,17 @@
  * @since 2020-02
  */
 public class BFS {
-    public static void FindPath<NodeType>(
+    public static List<NodeType> GetPath<NodeType>(
             IGraph<NodeType> graph, 
             NodeType startNode, NodeType endNode, 
-            List<NodeType> outputPath, int maxiterations=1000)
+            int maxiterations=1000)
     {
         Queue<NodeType> openQueue = new Queue<NodeType>();
         HashSet<NodeType> openSet = new HashSet<NodeType>();
         Dictionary<NodeType, NodeType> previous = new Dictionary<NodeType, NodeType>();
         openQueue.Enqueue(startNode);
         openSet.Add(startNode);
+        List<NodeType> outputPath = new List<NodeType>();
         int i; for (i = 0; i < maxiterations; ++i) { // After maxiterations, stop and return an empty path
             if (openQueue.Count == 0) {
                 break;
@@ -44,12 +45,6 @@ public class BFS {
                 }
             }
         }
+        return outputPath;
     }
-
-    public static List<NodeType> GetPath<NodeType>(IGraph<NodeType> graph, NodeType startNode, NodeType endNode, int maxiterations=1000) {
-        List<NodeType> path = new List<NodeType>();
-        FindPath(graph, startNode, endNode, path, maxiterations);
-        return path;
-    }
-
 }
