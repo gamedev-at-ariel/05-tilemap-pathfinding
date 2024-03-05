@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -62,6 +63,9 @@ public class TargetMover: MonoBehaviour {
             Vector3Int nextNode = shortestPath[1];
             transform.position = tilemap.GetCellCenterWorld(nextNode);
         } else {
+            if (shortestPath.Count == 0) {
+                Debug.LogError($"No path found between {startNode} and {endNode}");
+            }
             atTarget = true;
         }
     }
