@@ -22,7 +22,7 @@ public class KeyboardMoverByTile: KeyboardMover {
         if (allowedTiles.Contains(tileOnNewPosition)) {
             transform.position = newPosition;
         } else {
-            Debug.Log("You cannot walk on " + tileOnNewPosition + "!");
+            Debug.LogError("You cannot walk on " + tileOnNewPosition + "!");
         }
     }
 }
