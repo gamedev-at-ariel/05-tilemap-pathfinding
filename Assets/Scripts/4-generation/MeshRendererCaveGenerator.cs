@@ -12,7 +12,7 @@ using UnityEngine;
  */
 
 public class MeshRendererCaveGenerator: MonoBehaviour {
-    public MeshRenderer displayPlaneRenderer;
+    [SerializeField] MeshRenderer displayPlaneRenderer;
 
     [Tooltip("The percent of walls in the initial random map")]
     [Range(0, 1)]
@@ -40,14 +40,14 @@ public class MeshRendererCaveGenerator: MonoBehaviour {
         GenerateAndDisplayTexture(caveGenerator.GetMap());
 
         //Start the simulation
-        StartCoroutine(SimulateCavePattern());
+        SimulateCavePattern();
     }
 
 
     //Do the simulation in a coroutine so we can pause and see what's going on
-    private IEnumerator SimulateCavePattern() {
+    async void SimulateCavePattern() {
         for (int i = 0; i < simulationSteps; i++) {
-            yield return new WaitForSeconds(pauseTime);
+            await Awaitable.WaitForSecondsAsync(pauseTime);
 
             //Calculate the new values
             caveGenerator.SmoothMap();

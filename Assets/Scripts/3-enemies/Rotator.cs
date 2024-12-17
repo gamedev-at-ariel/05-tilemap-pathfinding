@@ -13,7 +13,7 @@ public class Rotator : MonoBehaviour {
     private float angle = 0;
 
     void Update() {
-        transform.Rotate(direction* angularVelocity*Time.deltaTime);
+        transform.Rotate(direction * angularVelocity*Time.deltaTime);
         angle += direction * Time.deltaTime;
         if (angle > 180)
             angle -= 360;

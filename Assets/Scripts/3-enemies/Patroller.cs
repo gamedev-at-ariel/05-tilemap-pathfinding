@@ -21,5 +21,14 @@ public class Patroller: TargetMover {
         }
         SetTarget(patrolPath.transform.GetChild(currentPointIndex).position);
     }
+
+    //private void OnEnable()
+    //{
+    //    Debug.Log("State Patroller enabled");
+    //}
+
+    //private void OnDisable()
+    //{
+    //    Debug.Log("State Patroller disabled");
+    //}
 }
- 

@@ -14,8 +14,13 @@ using Transition = System.Tuple<UnityEngine.MonoBehaviour, System.Func<bool>, Un
  */
 public class StateMachine: MonoBehaviour {
 
-    private List<State>      states      = new List<State>();
-    private List<Transition> transitions = new List<Transition>();
+    //public System.Func<bool>  testCondition;
+
+    //[SerializeField]
+    private List<State>      states      = new();
+
+    //[SerializeField]
+    private List<Transition> transitions = new();
 
     private State activeState = null;
 

@@ -40,19 +40,19 @@ public class TilemapCaveGenerator: MonoBehaviour {
 
         caveGenerator = new CaveGenerator(randomFillPercent, gridSize);
         caveGenerator.RandomizeMap();
-                
+
         //For testing that init is working
         GenerateAndDisplayTexture(caveGenerator.GetMap());
-            
+
         //Start the simulation
-        StartCoroutine(SimulateCavePattern());
+        SimulateCavePattern();
     }
 
 
     //Do the simulation in a coroutine so we can pause and see what's going on
-    private IEnumerator SimulateCavePattern()  {
+async void SimulateCavePattern()  {
         for (int i = 0; i < simulationSteps; i++)   {
-            yield return new WaitForSeconds(pauseTime);
+            await Awaitable.WaitForSecondsAsync(pauseTime);
 
             //Calculate the new values
             caveGenerator.SmoothMap();
