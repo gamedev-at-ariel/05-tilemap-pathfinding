@@ -22,13 +22,17 @@ public class TargetMover: MonoBehaviour {
     [Tooltip("The target position in grid coordinates")]
     [SerializeField] Vector3Int targetInGrid;
 
-    protected bool atTarget;  // This property is set to "true" whenever the object has already found the target.
+    // The current shortest path to the target, in grid coordinates.
+    private List<Vector3Int> currentPathInGrid = null;
 
-    public void SetTarget(Vector3 newTarget) {
-        if (targetInWorld != newTarget) {
-            targetInWorld = newTarget;
+    protected bool atTarget = true;  // This property is set to "true" whenever the object has already found the target.
+
+    public void SetTarget(Vector3 newTargetInWorld) {
+        if (targetInWorld != newTargetInWorld) {
+            targetInWorld = newTargetInWorld;
             targetInGrid = tilemap.WorldToCell(targetInWorld);
             atTarget = false;
+            currentPathInGrid = null;
         }
     }
 
@@ -53,19 +57,25 @@ public class TargetMover: MonoBehaviour {
         }
     }
 
-    private void MakeOneStepTowardsTheTarget() {
+    private void MakeOneStepTowardsTheTarget()
+    {
         Vector3Int startNode = tilemap.WorldToCell(transform.position);
-        Vector3Int endNode = targetInGrid;
-        List<Vector3Int> shortestPath = BFS.GetPath(tilemapGraph, startNode, endNode, maxIterations);
-        //Debug.Log("shortestPath = " + string.Join(" , ",shortestPath));
-        if (shortestPath.Count >= 2) { // shortestPath contains both source and target.
-            Vector3Int nextNode = shortestPath[1];
-            transform.position = tilemap.GetCellCenterWorld(nextNode);
-        } else {
-            if (shortestPath.Count == 0) {
+        if (currentPathInGrid == null || currentPathInGrid[0] != startNode)
+        {  // calculate new shortest path
+            Vector3Int endNode = targetInGrid;
+            currentPathInGrid = BFS.GetPath(tilemapGraph, startNode, endNode, maxIterations);
+            Debug.Log("new shortestPath = " + string.Join(" , ", currentPathInGrid));
+            if (currentPathInGrid.Count == 0) {
                 Debug.LogWarning($"No path found between {startNode} and {endNode}");
-            } 
+            }
+        }
+        if (currentPathInGrid.Count <= 1) {
+            Debug.Log($"Found target");
             atTarget = true;
+        } else { // currentPathInGrid contains both source and target.
+            currentPathInGrid.RemoveAt(0);  // this was the current node
+            Vector3Int nextNode = currentPathInGrid[0];  // this is the new node
+            transform.position = tilemap.GetCellCenterWorld(nextNode);
         }
     }
 }

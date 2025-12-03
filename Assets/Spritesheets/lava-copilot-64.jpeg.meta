@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      lava-copilot-64_0: -1640798142035343892
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

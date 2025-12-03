@@ -13,9 +13,6 @@ using Transition = System.Tuple<UnityEngine.MonoBehaviour, System.Func<bool>, Un
  * The first state added is the first active state.
  */
 public class StateMachine: MonoBehaviour {
-
-    //public System.Func<bool>  testCondition;
-
     //[SerializeField]
     private List<State>      states      = new();
 

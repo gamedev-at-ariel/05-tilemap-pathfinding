@@ -18,8 +18,8 @@ public class Patroller: TargetMover {
     private void Update() {
         if (atTarget) {
             currentPointIndex = (currentPointIndex + 1) % pointCount;
+            SetTarget(patrolPath.transform.GetChild(currentPointIndex).position);
         }
-        SetTarget(patrolPath.transform.GetChild(currentPointIndex).position);
     }
 
     //private void OnEnable()
