@@ -42,15 +42,15 @@ public class TilemapCaveGenerator: MonoBehaviour {
         caveGenerator.RandomizeMap();
 
         //For testing that init is working
-        GenerateAndDisplayTexture(caveGenerator.GetMap());
+        ShowPatternOnTileMap(caveGenerator.GetMap());
 
         //Start the simulation
         SimulateCavePattern();
     }
 
 
-    //Do the simulation in a coroutine so we can pause and see what's going on
-async void SimulateCavePattern()  {
+    //Do the simulation in an async function, so we can pause and see what's going on
+    async void SimulateCavePattern()  {
         for (int i = 0; i < simulationSteps; i++)   {
             await Awaitable.WaitForSecondsAsync(pauseTime);
 
@@ -58,7 +58,7 @@ async void SimulateCavePattern()  {
             caveGenerator.SmoothMap();
 
             //Generate texture and display it on the plane
-            GenerateAndDisplayTexture(caveGenerator.GetMap());
+            ShowPatternOnTileMap(caveGenerator.GetMap());
         }
         Debug.Log("Simulation completed!");
     }
@@ -67,7 +67,7 @@ async void SimulateCavePattern()  {
 
     //Generate a black or white texture depending on if the pixel is cave or wall
     //Display the texture on a plane
-    private void GenerateAndDisplayTexture(int[,] data) {
+    private void ShowPatternOnTileMap(int[,] data) {
         for (int y = 0; y < gridSize; y++) {
             for (int x = 0; x < gridSize; x++) {
                 var position = new Vector3Int(x, y, 0);
