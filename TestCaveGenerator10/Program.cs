@@ -15,7 +15,7 @@ void print(int[,] data, int gridSize) {
 void Main() {
     Console.WriteLine("Start CaveGenerator Test");
 
-    int gridSize = 50;
+    int gridSize = 20;
     CaveGenerator caveGenerator = new CaveGenerator(0.5f, gridSize);
     caveGenerator.RandomizeMap();
     int maxSteps = 5;
