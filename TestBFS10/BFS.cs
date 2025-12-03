@@ -7,9 +7,10 @@
  */
 public class BFS {
     public static List<NodeType> GetPath<NodeType>(
-            IGraph<NodeType> graph, 
-            NodeType startNode, NodeType endNode, 
+            IGraph<NodeType> graph,
+            NodeType startNode, NodeType endNode,
             int maxiterations=1000)
+        where NodeType : notnull
     {
         Queue<NodeType> openQueue = new Queue<NodeType>();
         HashSet<NodeType> openSet = new HashSet<NodeType>();

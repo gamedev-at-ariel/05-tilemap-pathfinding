@@ -37,7 +37,7 @@ namespace TestBFS {
             Console.WriteLine("Start BFS Test");
 
             var intGraph = new IntGraph();
-            var path = BFS.GetPath(intGraph, 90, 95);
+            var path = BFS.GetPath(intGraph, 90, 95); 
             var pathString = string.Join(",", path.ToArray());
             Console.WriteLine("path is: " + pathString);
             Debug.Assert(pathString == "90,91,92,93,94,95");
