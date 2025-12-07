@@ -69,10 +69,10 @@ public class TargetMover: MonoBehaviour {
                 Debug.LogWarning($"No path found between {startNode} and {endNode}");
             }
         }
-        if (currentPathInGrid.Count <= 1) {
+        if (currentPathInGrid.Count == 1) {
             Debug.Log($"Found target");
             atTarget = true;
-        } else { // currentPathInGrid contains both source and target.
+        } else if (currentPathInGrid.Count >= 2) { // currentPathInGrid contains both source and target.
             currentPathInGrid.RemoveAt(0);  // this was the current node
             Vector3Int nextNode = currentPathInGrid[0];  // this is the new node
             transform.position = tilemap.GetCellCenterWorld(nextNode);
