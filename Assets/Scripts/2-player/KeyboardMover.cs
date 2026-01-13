@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
  */
 public class KeyboardMover : MonoBehaviour {
 
-    [SerializeField] InputAction moveAction;
+    [SerializeField] protected InputAction moveAction;
 
     void OnValidate() {
         // Provide default bindings for the input actions.
@@ -30,18 +30,12 @@ public class KeyboardMover : MonoBehaviour {
         moveAction.Disable();
     }
 
-    protected Vector3 NewPosition() {
-        if (moveAction.WasPerformedThisFrame()) {
-            Vector3 movement = moveAction.ReadValue<Vector2>(); // Implicitly convert Vector2 to Vector3, setting z=0.
-            //Debug.Log("movement: " + movement);
-            return transform.position + movement;
-        } else {
-            return transform.position;
-        }
-    }
-
 
     void Update()  {
-        transform.position = NewPosition();
+        if (moveAction.WasPerformedThisFrame()) {
+            Vector3 movement = moveAction.ReadValue<Vector2>(); // Implicitly convert Vector2 to Vector3, setting z=0.
+            //Debug.Log($"movement={movement}");
+            transform.position = transform.position + movement;
+        } 
     }
 }

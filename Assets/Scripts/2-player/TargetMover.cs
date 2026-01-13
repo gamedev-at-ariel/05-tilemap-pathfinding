@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 /**
  * This component moves its object towards a given target position.
  */
+[RequireComponent(typeof(SnapToGrid))]
 public class TargetMover: MonoBehaviour {
     [SerializeField] Tilemap tilemap = null;
     [SerializeField] AllowedTiles allowedTiles = null;
@@ -34,6 +35,11 @@ public class TargetMover: MonoBehaviour {
             atTarget = false;
             currentPathInGrid = null;
         }
+    }
+
+    // Stop going towards target until a new target is set.
+    public void SetNoTarget() {
+        atTarget = true;
     }
 
     public Vector3 GetTarget() {
@@ -75,7 +81,8 @@ public class TargetMover: MonoBehaviour {
         } else if (currentPathInGrid.Count >= 2) { // currentPathInGrid contains both source and target.
             currentPathInGrid.RemoveAt(0);  // this was the current node
             Vector3Int nextNode = currentPathInGrid[0];  // this is the new node
-            transform.position = tilemap.GetCellCenterWorld(nextNode);
+            //transform.position = tilemap.GetCellCenterWorld(nextNode);
+            GetComponent<SnapToGrid>().LogicalPosition = tilemap.GetCellCenterWorld(nextNode);
         }
     }
 }

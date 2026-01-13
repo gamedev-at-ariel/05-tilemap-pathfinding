@@ -379,6 +379,8 @@ GameObject:
   - component: {fileID: 790962204}
   - component: {fileID: 790962203}
   - component: {fileID: 790962206}
+  - component: {fileID: 790962207}
+  - component: {fileID: 790962208}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -406,6 +408,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -427,6 +431,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
@@ -546,7 +551,7 @@ MonoBehaviour:
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: f1c8da0c-c1d2-4fcc-9bac-861f0c1a954f
-    m_Processors: 
+    m_Processors: Scale(factor=0.01)
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 2DVector
@@ -589,9 +594,98 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Move
       m_Flags: 8
+    - m_Name: 
+      m_Id: cb7a8a0d-b936-4fd3-8911-c40caa5dd289
+      m_Path: <Pointer>/delta
+      m_Interactions: 
+      m_Processors: ScaleVector2(x=0.01,y=0.01)
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 0
     m_Flags: 0
   tilemap: {fileID: 931517250}
   allowedTiles: {fileID: 1972678413}
+--- !u!114 &790962207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790962199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b66181536e4477479fa38aaadfc15e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClickMover
+  tilemap: {fileID: 931517250}
+  allowedTiles: {fileID: 1972678413}
+  speed: 2
+  maxIterations: 1000
+  targetInWorld: {x: 0, y: 0, z: 0}
+  targetInGrid: {x: 0, y: 0, z: 0}
+  moveTo:
+    m_Name: Move To
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 583fae57-c461-4cd0-9585-06f8df4dae03
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 69a68e6a-4fa9-4e8c-82af-163a390b4ea8
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move To
+      m_Flags: 0
+    - m_Name: 
+      m_Id: f007bcd0-5e43-4a43-a88e-a680e59f2884
+      m_Path: <Touchscreen>/Press
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move To
+      m_Flags: 0
+    m_Flags: 0
+  moveToLocation:
+    m_Name: Move To Location
+    m_Type: 0
+    m_ExpectedControlType: Vector2
+    m_Id: 58e2fb53-6998-43fd-b699-c47116f4c821
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 45774373-2204-4e08-a7d5-44e50d538730
+      m_Path: <Mouse>/position
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move To Location
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 2d0cd505-698c-4ea3-836f-821f391c3f66
+      m_Path: <Touchscreen>/position
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move To Location
+      m_Flags: 0
+    m_Flags: 0
+--- !u!114 &790962208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790962199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fdc1cdbc1657af49bcd084e02393dbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  tilemap: {fileID: 931517250}
 --- !u!1 &911555769
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,6 +770,8 @@ TilemapRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -697,6 +793,7 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -2623,6 +2720,7 @@ GameObject:
   - component: {fileID: 1373858625}
   - component: {fileID: 1373858627}
   - component: {fileID: 1373858624}
+  - component: {fileID: 1373858628}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Untagged
@@ -2650,6 +2748,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2671,6 +2771,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
@@ -2771,6 +2872,19 @@ MonoBehaviour:
   minAngle: -30
   maxAngle: 30
   angularVelocity: {x: 0, y: 60, z: 0}
+--- !u!114 &1373858628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373858621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fdc1cdbc1657af49bcd084e02393dbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SnapToGrid
+  tilemap: {fileID: 931517250}
 --- !u!1 &1572995961
 GameObject:
   m_ObjectHideFlags: 0
@@ -2920,6 +3034,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2941,6 +3057,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
